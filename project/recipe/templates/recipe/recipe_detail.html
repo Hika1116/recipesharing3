@@ -1,0 +1,40 @@
+
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}
+レシピ詳細
+{% endblock  %}
+
+
+{% block content1 %}
+
+<div class="recipe-detail">
+    <h3><span>レシピ名</span> {{ detail.recipe_title }}</h3>
+    <div class="action-area">
+        <button class="button-system button-favorite">★{{detail.favorite_sum}} Favorite!!</button>
+        <button class="button-system button-created">つくった！{{detail.created_sum}}</button>
+        <a class="user-link" href="#">by{{detail.user_name}}</a>
+    </div>
+    <div class="recipe-detail-area">
+        <img src="/{{ detail.recipe_image.image_path }}" alt="recipe_image">
+        <div class="recipe-introduce">
+            <p class="sentence">{{ detail.recipe_sentents }}</p>
+            <p class="category-name"><span>{{detail.category_name}}</span></p>
+            <div class="material-list">
+                <p>材料</p>
+                <ul>
+                    {% for material in detail.material %}
+                    <li>{{material.material_name}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}
+
+
+{% block js %}
+<script src={% static 'recipe/js/recipe_detail.bundle.js' %}></script>
+{% endblock %}

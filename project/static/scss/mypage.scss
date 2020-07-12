@@ -1,0 +1,176 @@
+@import "./base.scss";
+
+
+
+.profile-area {
+    margin-top: 30px;
+    width: 100%;
+    border: solid 1px $gray-system;
+    border-radius: 40px;
+    @include putPrefix(display, flex);
+    @include putPrefix(flex-wrap, wrap);
+    .icon-area {
+        width: calc(50% - 60px);
+        margin: 20px 30px;
+        img {
+            width: calc(80% - 60px);
+            margin: 0 auto;
+            display: block;
+            border-radius: calc((100%)/2);
+            border: solid 1px $gray-system;
+        }
+    }
+    .profile {
+        @include putPrefix(display, flex);
+        @include putPrefix(flex-wrap, wrap);
+        @include putPrefix(align-items, center);
+        width: calc(50% - 60px);
+        margin: 20px 30px;
+        position: relative;
+        .user-info {
+            width: 100%;
+            display: block;
+            height: 50px;
+            span {
+                line-height: 20px;
+            }
+            p {
+                font-size: 2.5rem;
+            }
+        }
+        .create-recipe-link {
+            position: absolute;
+            bottom: 30px;
+            a {
+                color: $gray-system;
+                &:hover{
+                    color: $dark-orange-system;
+                }
+            }
+        } 
+    }
+    .action-area {
+        width: 100%;
+        @include putPrefix(display, flex);
+        .count-area {
+            width: 33.33%;
+            border-top: solid 1px $gray-system;
+            border-left: solid 1px $gray-system;
+            height: 120px;
+            span {
+                display: block;
+                text-align: center;
+                line-height: 30px;
+                font-size: 1rem;
+            }
+            p {
+                display: block;
+                text-align: center;
+                font-size: 3rem;
+                line-height: 70px;
+            }
+        }
+        .count-left-area {
+            border-left: none;
+        }
+    }
+}
+
+
+.recipe-list-area {
+    width: calc(70% - 40px);
+    margin: 20px auto;
+    @include putPrefix(box-sizing, border-box);
+    border: solid 1px $gray_system;
+    border-radius: 10px;
+    padding: 10px;
+    h3 {
+        font-size: 1.4rem;
+        margin-left: 15px;
+        line-height: 30px;
+    }
+    .recipe-article-list-area {
+        .recipe-article {
+            width: calc(100% - 50px);
+            margin: 30px auto;
+            border: solid 1px $gray_system;
+            border-radius: 10px;
+            padding: 20px;
+            @include putPrefix(display, flex);
+            @include putPrefix(justify-content, center);
+
+            .recipe_article_image {
+                width: calc(35% - 10px);
+                margin: 0 5px;
+                object-fit: cover;
+            }
+
+            .recipe-article-content {
+                width: calc(65% - 10px);
+                margin: 5px;
+
+                h3 {
+                    margin-left: 0;
+                    font-size: 1.1rem;
+                    line-height: 30px;
+                    border-bottom: solid 1px $gray_system;
+                }
+
+                p {
+                    margin-top: 8px;
+
+                    span {
+                        padding: 3px 8px;
+                        border: solid 1px white;
+                        border-radius: 15px;
+                        background-color: $orange-system;
+                        color: white;
+                    }
+                }
+
+                .recipe_sentents {
+                    margin-top: 30px;
+                }
+
+                .material_info_str {
+                    margin-top: 30px;
+                    font-size: .8rem;
+                }
+
+                .link-area{
+                    margin-top: 30px;
+                    .link-orange {
+                        &:hover {
+                            color: $orange-system;
+                        }
+                    }
+                    .link-red {
+                        margin-left: 30px;
+                        &:hover {
+                            color: $dark-orange-system;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.link-a-tag {
+    margin-top: 30px;
+    color: $gray-system;
+}
+
+
+//画面横400px- スマホサイズ
+@media screen and (min-width:320px)and (max-width:768px) {}
+
+//画面横768px-1024px タブレットサイズ
+@media screen and (min-width:768px) and (max-width:1023px) {}
+
+//画面横1024px- PCデスクトップサイズ
+@media screen and (min-width:1024px) {}
+
+// 大型モニターサイズ
+@media screen and (min-width:1600px) {}

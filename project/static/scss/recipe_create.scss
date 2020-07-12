@@ -1,0 +1,100 @@
+@import "./base.scss";
+
+#header-title-recipe-create-page {
+    width: 100%;
+    font-size: $header-title-font-size;
+}
+
+.create-recipe-form-area {
+    width: calc(100% - 60px);
+    margin: 20px 30px;
+    form {
+        .create-form {
+            width: calc(100% - 80px);
+            margin: 15px auto;
+            @include putPrefix(display, flex);
+            @include putPrefix(flex-wrap, wrap);
+            label {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+        .submit-button-area {
+            margin-top: 40px;
+        }
+    }
+}
+
+.form-recipe-title {
+    input[type='text']{
+        width: 100%;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+.form-recipe-sentence {
+    textarea {
+        width: 100%;
+        resize: none;
+        height: 200px;
+    }
+}
+.form-category-choice {
+    select {
+        width: 100%;
+    }
+}
+.form-material-choice {
+    ul {
+        width: 100%;
+        height: 300px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 10px;
+        border: solid 1px $gray-system;
+        list-style: none;
+    }
+}
+.submit-button-area {
+    margin: 100px auto;
+    input[type='submit'] {
+        width: 300px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 10px;
+        color: white;
+        background-color: $orange-system;
+        border-radius: 20px;
+        font-size: 1rem;
+        border: solid 1px $gray-system;
+        transition: all .5s;
+        &:hover {
+            opacity: .6;
+        }
+    }
+}
+.form-error-area {
+    margin: 10px 0;
+    p {
+        color: $dark-orange-system;
+        font-weight: bold;
+    }
+}
+
+//画面横400px- スマホサイズ
+@media screen and (min-width:320px)and (max-width:768px) {}
+
+//画面横768px-1024px タブレットサイズ
+@media screen and (min-width:768px) and (max-width:1023px) {}
+
+//画面横1024px- PCデスクトップサイズ
+@media screen and (min-width:1024px) {
+    .container {
+        width: 1024px;
+        margin: 0 auto;
+    }
+}
+
+// 大型モニターサイズ
+@media screen and (min-width:1600px) {}

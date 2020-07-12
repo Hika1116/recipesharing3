@@ -1,0 +1,59 @@
+[
+    {
+        "model": "recipe.categorys",
+        "fields": {
+            "category_name": "朝ごはん",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    },
+    {
+        "model": "recipe.categorys",
+        "fields": {
+            "category_name": "昼ごはん",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }, 
+    {
+        "model": "recipe.categorys",
+        "fields": {
+            "category_name": "夕ごはん",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }, 
+    {
+        "model": "recipe.categorys",
+        "fields": {
+            "category_name": "ごはん",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }, 
+    {
+        "model": "recipe.categorys",
+        "fields": {
+            "category_name": "麺類",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }, 
+    {
+        "model": "recipe.categorys",
+        "fields": {
+            "category_name": "おかず",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }, 
+    {
+        "model": "recipe.categorys",
+        "fields": {
+            "category_name": "お肉料理",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }
+    
+]

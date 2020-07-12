@@ -1,0 +1,35 @@
+[
+    {
+        "model": "recipe.recipeprocess",
+        "fields": {
+            "recipe_id":1,
+            "process_image_id":1,
+            "process_text":"トーストを用意",
+            "process_order":1,
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    },
+    {
+        "model": "recipe.recipeprocess",
+        "fields": {
+            "recipe_id": 1,
+            "process_image_id": 1,
+            "process_text": "チーズを載せてピザを焼く",
+            "process_order": 2,
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    },
+    {
+        "model": "recipe.recipeprocess",
+        "fields": {
+            "recipe_id": 2,
+            "process_image_id": 2,
+            "process_text": "豚肉を焼いて丼に載せる",
+            "process_order": 1,
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }
+]

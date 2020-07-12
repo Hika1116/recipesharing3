@@ -1,0 +1,147 @@
+@import "./base.scss";
+
+.search-area {
+    width: calc(30% - 40px);
+    margin: 20px 20px;
+    @include putPrefix(box-sizing, border-box);
+    border: solid 1px $gray_system;
+    border-radius: 10px;
+    padding: 10px;
+
+    .search-form-ara {
+        @include putPrefix(display, flex);
+        @include putPrefix(flex-wrap, wrap);
+        
+        label {
+            width: 100%;
+            display: block;
+            margin-top: 30px;
+            font-size: .8rem
+        }
+        label:first-child {
+            margin-top: 10px;
+        }
+        .form-input {
+            width: 100%;
+            margin-top: 5px;
+        }
+        #title-recipe {
+            font-size: 1rem;
+            color: $gray_system;
+        }
+        #category-recipe {
+            line-height: 20px;
+            font-size: 1rem;
+            color: $gray_system;
+        }
+        #material-check-box {
+            height: 150px;
+            width: calc(100% - 20px);
+            padding: 10px;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            border: solid 1px $gray_system;
+        }
+        .submit-form {
+            width: 100%;
+            margin: 30px 0;
+            @include putPrefix(display, flex);
+            @include putPrefix(justify-content, center);
+            .search-button {
+                background-color: $orange-system;
+                width: 60%;
+            }
+        }
+    }
+}
+
+.url-pattern {
+    display: none;
+}
+.title-sub {
+    font-size: $header-title-font-size;
+    margin: 10px 0;
+    margin-left: 5px;
+}
+::placeholder {
+    color: $gray_system;
+}
+
+.recipe-list-area {
+    width: calc(70% - 40px);
+    margin: 20px 20px;
+    @include putPrefix(box-sizing, border-box);
+    border: solid 1px $gray_system;
+    border-radius: 10px;
+    padding: 10px;
+
+    .recipe-article-list-area {
+        .recipe-article {
+            width: calc(100% - 50px);
+            margin: 30px auto;
+            border: solid 1px $gray_system;
+            border-radius: 10px;
+            padding: 20px;
+            @include putPrefix(display, flex);
+            @include putPrefix(justify-content, center);
+
+            .recipe_article_image {
+                width: calc(35% - 10px);
+                margin: 0 5px;
+                object-fit: cover;
+            }
+            .recipe-article-content {
+                width: calc(65% - 10px);
+                margin: 5px;
+                h3 {
+                    margin-left: 0;
+                    font-size: 1.1rem;
+                    line-height: 30px;
+                    border-bottom: solid 1px $gray_system;
+                }
+                p {
+                    margin-top: 8px;
+                    span {
+                        padding: 3px 8px;
+                        border: solid 1px white;
+                        border-radius: 15px;
+                        background-color: $orange-system;
+                        color: white;
+                    }
+                }
+                .recipe_sentents {
+                    margin-top: 30px;
+                }
+                .material_info_str {
+                    margin-top: 30px;
+                    font-size: .8rem;
+                }
+                transition: background .5s;
+                .button-favorite {
+                    margin-top: 30px;
+                    background-color: $yellow-system;
+                }
+            }
+            &:hover {
+                transform: translateY(-4px);
+                background-color: azure;
+            }
+        }
+    }
+}
+
+
+
+//画面横400px- スマホサイズ
+@media screen and (min-width:320px)and (max-width:768px) {}
+
+//画面横768px-1024px タブレットサイズ
+@media screen and (min-width:768px) and (max-width:1023px) {}
+
+//画面横1024px- PCデスクトップサイズ
+@media screen and (min-width:1024px) {
+
+}
+
+// 大型モニターサイズ
+@media screen and (min-width:1600px) {}

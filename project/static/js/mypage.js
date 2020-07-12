@@ -1,0 +1,2 @@
+import '../scss/mypage.scss';
+

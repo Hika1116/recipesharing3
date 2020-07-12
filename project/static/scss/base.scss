@@ -1,0 +1,78 @@
+// ベースSCSS
+$background-color : black;
+$text-color:white;
+
+// color
+$dark-orange-system:#EF866B;
+$orange-system:#F7B46B;
+$yellow-system:#F7D76B;
+$gray-system:#BCB5B5;
+
+// font-size
+$header-title-font-size:1.4rem;
+
+@mixin absPosition ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+//ベンダープレフレックスの付与
+@mixin putPrefix($property, $value) {
+
+    @each $prefix in -webkit-,
+    -moz-,
+    -ms-,
+    -o-,
+    '' {
+        #{$prefix}#{$property}: $value;
+    }
+}
+
+.preload {
+    @include putPrefix('transition', 'none !important');
+}
+
+
+.button-favorite {
+
+    &:hover {
+        transform: translateY(2px);
+        opacity: .6;
+        border: solid 1px $yellow-system;
+    }
+}
+
+.button-system {
+    transition: all .5s;
+
+    padding: 3px 8px;
+    border: solid 1px white;
+    border-radius: 15px;
+    color: white;
+    transition: background .5s;
+
+    &:hover {
+        transform: translateY(2px);
+        opacity: .8;
+    }
+    &:focus {
+        outline: 0;
+        opacity: .8;
+    }
+}
+
+
+.category-name {
+    margin-top: 8px;
+
+    span {
+        padding: 3px 8px;
+        border: solid 1px white;
+        border-radius: 15px;
+        background-color: $orange-system;
+        color: white;
+    }
+}

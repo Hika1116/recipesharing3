@@ -1,0 +1,28 @@
+[
+    {
+        "model": "recipe.recipes",
+        "fields": {
+            "user_id":1,
+            "recipe_image_id":1,
+            "category_id":1,
+            "recipe_title":"ピザトースト",
+            "recipe_sentents":"朝にぴったりなピザトーストの作り方です。",
+            "created_sum":0,
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    },
+    {
+        "model": "recipe.recipes",
+        "fields": {
+            "user_id": 1,
+            "recipe_image_id": 2,
+            "category_id": 2,
+            "recipe_title": "豚肉丼",
+            "recipe_sentents": "ニンニクがっつりの豚丼の作り方です。",
+            "created_sum": 0,
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }
+]

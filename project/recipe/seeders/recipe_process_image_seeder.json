@@ -1,0 +1,15 @@
+[{
+        "model": "recipe.recipeprocessimage",
+        "fields": {
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    },
+    {
+        "model": "recipe.recipeprocessimage",
+        "fields": {
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }
+]

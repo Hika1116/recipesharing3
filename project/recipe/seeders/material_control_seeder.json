@@ -1,0 +1,31 @@
+[{
+        "model": "recipe.materialcontrol",
+        "fields": {
+            "recipe_id": 1,
+            "material_id":1,
+            "amount":"一掴み",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    },
+    {
+        "model": "recipe.materialcontrol",
+        "fields": {
+            "recipe_id": 1,
+            "material_id": 7,
+            "amount": "ひとかけら",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    },
+    {
+        "model": "recipe.materialcontrol",
+        "fields": {
+            "recipe_id": 2,
+            "material_id": 5,
+            "amount": "100g",
+            "created_datetime": "2020-05-04T15:43:19.760",
+            "updated_datetime": "2020-05-04T15:43:19.760"
+        }
+    }
+]

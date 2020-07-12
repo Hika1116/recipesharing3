@@ -1,0 +1,66 @@
+
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}
+マイページ
+{% endblock  %}
+
+
+{% block content1 %}
+    <div class="profile-area">
+        <div class="icon-area">
+            <img src="/{{user.icon.url }}" alt="user-image">
+        </div>
+        <div class="profile">
+            <div class="user-info">
+                <span class="user">ユーザー</span>
+                <p class="user-name">{{user.user_name}}</p>
+            </div>
+            <p class="create-recipe-link"><a href="{% url 'recipe:recipe_create' %}">レシピ投稿</a></p>
+        </div>
+        <div class="action-area">
+            <div class="count-area count-left-area">
+                <span>レシピ投稿数</span>
+                <p>0</p>
+            </div>
+            <div class="count-area">
+                <span>お気に入り数</span>
+                <p>0</p>
+            </div>
+            <div class="count-area">
+                <span>総つくった！数</span>
+                <p>0</p>
+            </div>
+        </div>
+    </div>
+    <div class="recipe-list-area">
+        <h3>{{user.user_name}}さんの投稿記事一覧</h3>
+        <hr>
+        <div class="recipe-list">
+            <div class="recipe-article-list-area">
+                {% for recipe in recipe_list %}
+                <article class="recipe-article">
+                    <img class="recipe_article_image" src="/{{ recipe.recipe_image.image_path.url }}"
+                        alt="recipe_image">
+                    <div class="recipe-article-content">
+                        <h3>{{ recipe.recipe_title }}</h3>
+                        <p><span>{{recipe.category_name}}</span> by{{ recipe.user_name }}</p>
+                        <p class="recipe_sentents">{{ recipe.recipe_sentents}}</p>
+                        <p class="material_info_str">材料：{{ recipe.material_info_str }}</p>
+                        <div class="link-area">
+                            <a class="link-a-tag link-orange" href="{% url 'recipe:recipe_detail' recipe.recipe_id %}">詳細へ</a>
+                            <a class="link-a-tag link-red" href="{% url 'recipe:recipe_edit' recipe.recipe_id %}">編集・削除</a>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock  %}
+
+
+{% block js %}
+<script src={% static 'recipe/js/mypage.bundle.js' %}></script>
+{% endblock %}

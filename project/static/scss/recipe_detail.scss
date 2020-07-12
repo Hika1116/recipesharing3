@@ -1,0 +1,87 @@
+@import "./base.scss";
+
+.recipe-detail {
+    border: solid 1px $gray_system;
+    border-radius: 10px;
+    @include putPrefix('box-sizing', 'border-box');
+    @include putPrefix(display, flex);
+    @include putPrefix(flex-wrap, wrap);
+    margin: 50px auto;
+    h3 {
+        margin: 20px 30px;
+        width: calc(100% - 60px);
+        font-size: $header-title-font-size;
+        // border-bottom: solid 1px $gray-system;
+        >span {
+            font-size: .8rem;
+        }
+    }
+    .action-area {
+        @include putPrefix(display, flex);
+        @include putPrefix(flex-wrap, wrap);
+        padding-bottom: 10px;
+        margin: 0px 30px;
+        width: calc(100% - 60px);
+        .button-favorite {
+            background-color: $yellow-system;
+        }
+        .button-created {
+            background-color: $orange-system;
+        }
+        a {
+            margin-left: auto;
+            margin-right: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            color: $gray-system;
+        }
+    }
+    .recipe-detail-area {
+        @include putPrefix(display, flex);
+        @include putPrefix(flex-wrap, wrap);
+        margin: 30px 30px;
+        width: calc(100% - 60px);
+        img {
+            width: calc(50% - 60px);
+            margin: 20px 30px;
+            display: block;
+        }
+        .recipe-introduce {
+            display: block;
+            width: calc(50% - 60px);
+            margin: 20px 30px;
+            .sentence {
+                margin-top: 10px;
+            }
+            .category-name {
+                margin-top: 10px;
+            }
+            .material-list {
+                margin-top: 30px;
+                ul {
+                    margin-top: 5px;
+                    border: solid 1px $gray-system;
+                    border-radius: 10px;
+                    padding: 10px;
+                    li {
+                        margin-left: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+//画面横400px- スマホサイズ
+@media screen and (min-width:320px)and (max-width:768px) {}
+
+//画面横768px-1024px タブレットサイズ
+@media screen and (min-width:768px) and (max-width:1023px) {}
+
+//画面横1024px- PCデスクトップサイズ
+@media screen and (min-width:1024px) {}
+
+// 大型モニターサイズ
+@media screen and (min-width:1600px) {}

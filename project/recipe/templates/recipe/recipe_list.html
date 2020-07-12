@@ -1,0 +1,83 @@
+
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}
+レシピ共有アプリケーション
+{% endblock  %}
+
+{% block content1 %}
+
+<!-- 検索フォームエリア -->
+<div class="search-area">
+    <div class="inputed-data-area" style="display:none">
+        {% if parameter %}
+            {% if parameter.title %}
+                <p id="inputed-title">{{parameter.title}}</p>
+            {% endif %}
+            {% if parameter.categorys %}
+                <p id="inputed-categorys">{{parameter.categorys}}</p>
+            {% endif %}
+            {% if parameter.materials %}
+                <p id="inputed-materials">{{parameter.materials}}</p>
+            {% endif %}
+        {% endif %}
+    </div>
+    <h3 class="search-title title-sub">検索条件</h3>
+    <hr>
+    <div class="search-form-ara">
+        <label class="form-label" for="title-recipe">タイトル</label>
+        <input class="form-input" type="text" id="title-recipe" placeholder="タイトルで検索">
+        <label for="category-recipe">カテゴリー</label>
+        <select class="form-input" name="category" id="category-recipe">
+            <option value="0">カテゴリーを選択してください</option>
+            {% for category in search_form_list.categorys %}
+                <option value="{{ category.id }}">{{ category.category_name}}</option>
+            {% endfor %}
+        </select>
+        <label for="material-recipe">材料</label>
+        <div class="form-input" id="material-check-box">
+            {% for material in search_form_list.materials %}
+                <input type="checkbox" class="material-item" name="material" value="{{ material.id }}">{{material.material_name}}<br>  
+            {% endfor %}
+        </div>
+        <form id="search-recipe-form">
+            <p class='url-pattern'>
+                {% url 'recipe:recipes' %}
+            </p>
+            <input type="hidden" name="title">
+            <input type="hidden" name="categorys">
+            <input type="hidden" name="materials">
+        </form>
+        <div class="submit-form">
+            <button class="button-system search-button">検索</button>
+        </div>
+    </div>
+</div>
+
+<!-- 投稿レシピ一覧エリア -->
+<div class="recipe-list-area">
+    <h3 class="recipe-list-title title-sub">レシピ一覧</h3>
+    <hr>
+    <div class="recipe-article-list-area">
+        {% for recipe in recipe_list %}
+            <article class="recipe-article">
+                <a href="{% url 'recipe:recipe_detail' recipe.recipe_id %}" style="display:none;"></a>
+                <img class="recipe_article_image" src="/{{ recipe.recipe_image.image_path.url }}" alt="recipe_image">
+                <div class="recipe-article-content">
+                    <h3>{{ recipe.recipe_title }}</h3>
+                    <p><span>{{recipe.category_name}}</span> by{{ recipe.user_name }}</p>
+                    <p class="recipe_sentents">{{ recipe.recipe_sentents}}</p>
+                    <p class="material_info_str">材料：{{ recipe.material_info_str }}</p>
+                    <button class="button-system button-favorite">★{{recipe.favorite_sum}} Favorite!!</button>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+</div>
+{% endblock  %}
+
+
+{% block js %}
+<script src={% static 'recipe/js/recipes.bundle.js' %}></script>
+{% endblock %}
