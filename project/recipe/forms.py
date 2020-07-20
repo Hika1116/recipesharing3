@@ -58,7 +58,8 @@ class RecipeCreateForm(forms.Form):
     )
 
     recipe_image = forms.ImageField(
-        label="レシピ画像"
+        label="レシピ画像",
+        required=True
     )
 
     def __init__(self, *args, **kwargs):
@@ -85,6 +86,7 @@ class RecipeCreateForm(forms.Form):
 
         return data
 
+# レシピ編集フォーム
 class RecipeUpdateForm(RecipeCreateForm):
 
     def __init__(self, *args, **kwargs):
@@ -100,8 +102,9 @@ class RecipeUpdateForm(RecipeCreateForm):
 
         logger = logging.getLogger("consol")
         # 値を設定
-        self.fields['recipe_sentence'].widget.attrs['textContent'] = recipe_sentence
-        self.fields['recipe_title'].widget.attrs['value'] = title
+        self.fields['recipe_title'].initial = title
+        self.fields['recipe_sentence'].initial = recipe_sentence
         self.fields['category_id_choice'].initial = category_id_choice
         self.fields['material_id_multi_choice'].initial = material_id_multi_choice
-        self.fields['recipe_image'].widget.attrs['src'] = '/' + recipe_image.image_path.url
+        self.fields['recipe_image'].initial = '/' + recipe_image.image_path.url
+        self.fields['recipe_image'].required = True

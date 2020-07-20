@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView, CreateView,FormView
@@ -11,9 +12,13 @@ from django.urls import reverse_lazy
 from django.db import transaction
 from .forms import RecipeCreateForm, RecipeUpdateForm
 
+from django.http import HttpResponse
+import datetime
+import os
+
 class RecipeDetail(TemplateView):
     """
-    レシピ少佐画面ビュークラス
+    レシピ詳細画面ビュークラス
     """
     template_name = 'recipe/recipe_detail.html'
 
@@ -197,11 +202,13 @@ class RecipeCreateFormView(FormView):
         with transaction.atomic():
             recipe = Recipes()
             recipe.user = User.objects.get(pk=1)
-            recipe.category = Categorys.objects.get(pk=int(post_data.get('category_id_choice')[0]))
+            recipe.category = Categorys.objects.get(
+                pk=int(post_data.get('category_id_choice')[0])
+                )
             recipe.recipe_title = post_data.get('recipe_title')
             recipe.recipe_sentents = post_data.get('recipe_sentence')
             recipe.created_sum = 0
-
+    
             # レシピ画像の作成、保存
             recipe_image = RecipeImage(
                 image_path=self.request.FILES['recipe_image']
@@ -223,14 +230,9 @@ class RecipeCreateFormView(FormView):
 
 class RecipeEditFormView(FormView):
     # レシピ編集画面ビュー
-    template_name = 'recipe/recipe_create.html'
+    template_name = 'recipe/recipe_edit.html'
     form_class = RecipeUpdateForm
     success_url = reverse_lazy('recipe:mypage', kwargs={'user_id': 1})
-
-    # def get_form(self):
-    #     form = super(RecipeEditFormView, self).get_form()
-    #     form.fields['recipe_title'] = 'hikaru'
-    #     return form
 
     def get_form_kwargs(self):
         kwargs = super(RecipeEditFormView, self).get_form_kwargs()
@@ -241,11 +243,12 @@ class RecipeEditFormView(FormView):
             .select_related("recipe_image") \
             .prefetch_related('material') \
             .filter(
-                id=11
+                id= self.kwargs.get('recipe_id')
             )
 
         logger = logging.getLogger("consol")
         logger.info(recipe)
+        logger.info(self.kwargs.get('recipe_id'))
 
         kwargs['recipe_title'] = recipe[0].recipe_title
         kwargs['recipe_sentence'] = recipe[0].recipe_sentents
@@ -256,8 +259,56 @@ class RecipeEditFormView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['is_edit'] = True# editモードをオン
+        context['edit_recipe_id'] = self.kwargs.get('recipe_id')
         return context
+
+    def form_invalid(self, form):
+        logger = logging.getLogger("consol")
+        logger.info(type(form))
+        return super().form_invalid(form)
+
+    def form_valid(self, form):
+        post_data = self.request.POST
+        logger = logging.getLogger("consol")
+        logger.info("update recipe data")
+
+        with transaction.atomic():
+            # レシピテーブル更新
+            recipe = Recipes.objects.get(pk=self.kwargs.get('recipe_id'))
+            recipe.category = Categorys.objects.get(
+                pk=int(post_data.get('category_id_choice')[0])
+            )
+            recipe.recipe_title = post_data.get('recipe_title')
+            recipe.recipe_sentents = post_data.get('recipe_sentence')
+            recipe.created_sum = 0
+            
+            # レシピ画像の削除
+            recipe_image_delete = recipe.recipe_image
+            if os.path.exists(recipe_image_delete.image_path.name):
+                os.remove(recipe_image_delete.image_path.name)
+
+            # レシピ画像テーブルの更新
+            recipe_image = RecipeImage(
+                image_path=self.request.FILES['recipe_image']
+            )
+            recipe_image.save()
+
+            recipe.recipe_image = recipe_image
+            recipe.save()
+
+            # 材料の紐付け削除
+            MaterialControl.objects.filter(recipe_id=recipe.id).delete()
+
+            for material_choice_id in post_data.getlist('material_id_multi_choice'):
+                material_controll = MaterialControl.objects.update_or_create(
+                    recipe=recipe,
+                    material=Materials.objects.get(pk=int(material_choice_id)),
+                    amount='g'
+                )
+
+        return super().form_valid(form)
+
+
 
 def createRecipeListInfo(recipe_list):
     """
@@ -289,3 +340,9 @@ def createRecipeListInfo(recipe_list):
         recipe_edited_info.append(recipe_entity)
         
     return recipe_edited_info
+
+
+def get_test_response(request, test_id):
+    now = datetime.datetime.now()
+    html = "<html><body>It is now %s.</body></html>" % now
+    return HttpResponse(html)

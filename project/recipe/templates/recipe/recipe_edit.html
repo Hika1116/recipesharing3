@@ -3,19 +3,14 @@
 {% load static %}
 
 {% block title %}
-レシピ投稿
+レシピ編集
 {% endblock  %}
-
 
 {% block content1 %}
     <div class="create-recipe-form-area">
-        {% if is_edit %}
         <h1 id="header-title-recipe-create-page">レシピ編集</h1>
-        {% else %}
-        <h1 id="header-title-recipe-create-page">レシピ投稿</h1>
-        {% endif %}
         <hr>
-        <form action="{% url 'recipe:recipe_create' %}" method="POST" enctype="multipart/form-data">
+        <form action="{% url 'recipe:recipe_edit' edit_recipe_id %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="create-form form-recipe-title">
                 <label for="id_recipe_title">タイトル</label>
@@ -70,11 +65,7 @@
             </div>
 
             <div class="submit-button-area create-form">
-            {% if is_edit %}
-            <input type="submit" value="変更">  
-            {% else %}
-            <input type="submit" value="保存">
-            {% endif %}
+                <input type="submit" value="変更">
             </div>
         </form>
     </div>
