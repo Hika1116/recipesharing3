@@ -4,6 +4,7 @@ from django.contrib.auth.models import (
 )
 
 
+
 ## ユーザー情報定義
 class UserManager(BaseUserManager):
     """
